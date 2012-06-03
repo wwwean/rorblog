@@ -4,7 +4,7 @@
   <div class="content-<%= post.id %>">
     <div class="title"><h2><%= link_to post.title, post %></h2></div>
     <div class="body"><%= post.body %></div>
-    <% if @post.author? %>
+    <% if post.author? %>
       <div class="author"><%= post.author %></div>
     <% end %>
     <ul class="admin-links">

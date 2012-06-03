@@ -20,6 +20,40 @@
   Автор не указан
 </p>
 <% end %>
+<hr style="height: 800px">
+<br />
+
+<p><%= @comments %></p>
+<div class="comments">
+  <h2 class="title">Комментарии:</h2>
+  <% @post.comments.each do |comment| %>
+    <div id="<%= comment.id %>comment" class="comment">
+      <div class="link-comment"><%= link_to '#', post_path(@post, :anchor => "#{comment.id}comment") %></div>
+      <div class="date-comment"><%= comment.created_at %></div>
+      <div class="commenter"><%= comment.commenter %></div>
+      <div class="comment-content"><%= comment.body %></div>
+    </div>
+    <hr>
+  <% end %>
+</div>
+
+
+<div class="addcomment">
+<h2>Добавить комментарий:</h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+    <p>
+      <%= f.label :commenter %><br />
+      <%= f.text_field :commenter %>
+    </p>
+    <p>
+      <%= f.label :body %><br />
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
+</div>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
