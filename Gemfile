@@ -8,6 +8,8 @@ gem 'rails', '3.2.1'
 gem 'mysql2'
 gem 'typus'
 gem "gravatar_image_tag", "~> 1.1.2"
+gem 'faker'
+gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
