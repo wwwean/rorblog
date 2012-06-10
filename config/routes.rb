@@ -2,6 +2,7 @@ Rorblog::Application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
+  resources :relationships, :only => [:create, :destroy]
 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
@@ -32,7 +33,12 @@ Rorblog::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :blog
-  resources :users
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   # Sample resource route with options:
   #   resources :products do
